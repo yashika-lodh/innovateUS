@@ -5,8 +5,8 @@ interface FormState {
   firstName: string;
   lastName: string;
   country: string;
-  govAffiliated: string;
-  newsletterOptIn: boolean;
+  govOrg: string;
+  newsletter: boolean;
 }
 
 interface FormErrors {
@@ -14,7 +14,7 @@ interface FormErrors {
   firstName?: string;
   lastName?: string;
   country?: string;
-  govAffiliated?: string;
+  govOrg?: string;
 }
 
 const initialState: FormState = {
@@ -22,8 +22,8 @@ const initialState: FormState = {
   firstName: "",
   lastName: "",
   country: "",
-  govAffiliated: "",
-  newsletterOptIn: false,
+  govOrg: "",
+  newsletter: false,
 };
 
 type SubmitStatus = "idle" | "loading" | "success" | "error";
@@ -44,7 +44,7 @@ function validate(data: FormState): FormErrors {
   if (!data.firstName.trim()) errors.firstName = "First name is required.";
   if (!data.lastName.trim()) errors.lastName = "Last name is required.";
   if (!data.country) errors.country = "Select a country.";
-  if (!data.govAffiliated) errors.govAffiliated = "This field is required.";
+  if (!data.govOrg) errors.govOrg = "This field is required.";
 
   return errors;
 }
@@ -181,15 +181,15 @@ export default function RegistrationForm() {
           </label>
           <select
             id="govAffiliated"
-            value={form.govAffiliated}
-            onChange={(e) => updateField("govAffiliated", e.target.value)}
-            aria-invalid={!!errors.govAffiliated}
+            value={form.govOrg}
+            onChange={(e) => updateField("govOrg", e.target.value)}
+            aria-invalid={!!errors.govOrg}
           >
             <option value="" disabled></option>
             <option value="yes">Yes</option>
             <option value="no">No</option>
           </select>
-          <p className="field-error">{errors.govAffiliated}</p>
+          <p className="field-error">{errors.govOrg}</p>
         </div>
 
         <hr className="divider" />
@@ -199,8 +199,8 @@ export default function RegistrationForm() {
           <input
             type="checkbox"
             id="newsletterOptIn"
-            checked={form.newsletterOptIn}
-            onChange={(e) => updateField("newsletterOptIn", e.target.checked)}
+            checked={form.newsletter}
+            onChange={(e) => updateField("newsletter", e.target.checked)}
           />
           <label htmlFor="newsletterOptIn">
             Yes, sign me up for the InnovateUS weekly newsletter with updates on new courses, workshops, and events.
