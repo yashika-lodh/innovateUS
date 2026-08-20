@@ -713,7 +713,7 @@ select[aria-invalid="true"] {
     padding: 15px 30px;
     border: 1.5px solid #bcd8f6;
     border-radius: 100px;
-    margin: 50px 0 50px 0;
+    margin-bottom: 50px;
   }
 
   .footer-bottom-row {
