@@ -46,6 +46,14 @@ function PartnerBar({
   );
 }
 
+function ArrowDown() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ marginLeft: 4 }}>
+      <path d="M6 2v7M3 6.5l3 3 3-3" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 function App() {
   const [partnerBarOpen, setPartnerBarOpen] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
@@ -54,61 +62,41 @@ function App() {
 
   return (
     <>
-      {/* Top partner bar — collapsible, matches reference site's expand/collapse behavior */}
-      {/* <div className="partner-bar">
-        <button
-          className="partner-bar__toggle"
-          onClick={() => setPartnerBarOpen((open) => !open)}
-          aria-expanded={partnerBarOpen}
-          aria-controls="partner-links"
-        >
-          <span className="partner-label">This is a partner project of :</span>
-          <span className={`partner-bar__arrow ${partnerBarOpen ? "partner-bar__arrow--open" : ""}`} aria-hidden="true">
-            ↓
-          </span>
-        </button>
-        <div id="partner-links" className={`partner-bar__links ${partnerBarOpen ? "partner-bar__links--open" : ""}`}>
-          {PARTNER_LINKS.map((link) => (
-            <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">
-              ↗ {link.label}
-            </a>
-          ))}
-        </div>
-      </div> */}
-
       <PartnerBar open={partnerBarOpen} onToggle={() => setPartnerBarOpen((o) => !o)} />
 
       {/* Nav */}
       <header className="site-header">
-        <a href="#">
-          <img src="https://innovate-us.org/images/wordmark_light.svg" alt="InnovateUS" className="logo-img" />
-        </a>
+        <div className="container header-inner">
+          <a href="#">
+            <img src="https://innovate-us.org/images/wordmark_light.svg" alt="InnovateUS" className="logo-img" />
+          </a>
 
-        {/* Desktop nav — always visible */}
-        <nav className="main-nav main-nav--desktop">
-          {NAV_LINKS.map((link) => (
-            <a key={link.label} href="#">
-              {link.label} {link.expandable ? "⌄" : ""}
-            </a>
-          ))}
-        </nav>
+          {/* Desktop nav — always visible */}
+          <nav className="main-nav main-nav--desktop">
+            {NAV_LINKS.map((link) => (
+              <a key={link.label} href="#" style={{ display: "inline-flex", alignItems: "center" }}>
+                {link.label} {link.expandable && <ArrowDown />}
+              </a>
+            ))}
+          </nav>
 
-        <a href="#" className="pill-btn pill-btn--outline main-nav__cta">
-          Sign Up for Updates
-        </a>
+          <a href="#" className="pill-btn pill-btn--outline main-nav__cta">
+            Sign Up for Updates
+          </a>
 
-        {/* Mobile hamburger toggle */}
-        <button
-          className="hamburger"
-          onClick={() => setNavOpen((open) => !open)}
-          aria-expanded={navOpen}
-          aria-controls="mobile-nav"
-          aria-label={navOpen ? "Close menu" : "Open menu"}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
+          {/* Mobile hamburger toggle */}
+          <button
+            className="hamburger"
+            onClick={() => setNavOpen((open) => !open)}
+            aria-expanded={navOpen}
+            aria-controls="mobile-nav"
+            aria-label={navOpen ? "Close menu" : "Open menu"}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
       </header>
 
       {/* Mobile nav — collapsible hamburger menu */}
@@ -126,7 +114,7 @@ function App() {
                 {link.label}
                 {link.expandable && (
                   <span className={`mobile-nav__chevron ${openNavSection === link.label ? "mobile-nav__chevron--open" : ""}`}>
-                    ↓
+                    <ArrowDown />
                   </span>
                 )}
               </button>
