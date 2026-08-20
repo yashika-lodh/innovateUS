@@ -1,23 +1,47 @@
+import { useState } from "react";
 import RegistrationForm from "./registration-form";
 
+const PARTNER_LINKS = [
+  { label: "AI for Impact", href: "https://burnes.northeastern.edu/ai-for-impact-coop/" },
+  { label: "The Burnes Center for Social Change", href: "https://www.theburnescenter.org" },
+  { label: "Reboot Democracy", href: "https://rebootdemocracy.ai" },
+  { label: "The GovLab", href: "https://thegovlab.org" },
+];
+
+const NAV_LINKS = [
+  { label: "Ways to Learn", expandable: true },
+  { label: "Featured Topics", expandable: false },
+  { label: "News & Perspectives", expandable: true },
+  { label: "About Us", expandable: true },
+];
+
 function App() {
+  const [partnerBarOpen, setPartnerBarOpen] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
+  const [openNavSection, setOpenNavSection] = useState<string | null>(null);
+
   return (
     <>
-      {/* Top partner bar */}
+      {/* Top partner bar — collapsible, matches reference site's expand/collapse behavior */}
       <div className="partner-bar">
-        <span className="partner-label">This is a partner project of :</span>
-        <a href="https://burnes.northeastern.edu/ai-for-impact-coop/" target="_blank" rel="noopener noreferrer">
-          ↗ AI for Impact
-        </a>
-        <a href="https://www.theburnescenter.org" target="_blank" rel="noopener noreferrer">
-          ↗ The Burnes Center for Social Change
-        </a>
-        <a href="https://rebootdemocracy.ai" target="_blank" rel="noopener noreferrer">
-          ↗ Reboot Democracy
-        </a>
-        <a href="https://thegovlab.org" target="_blank" rel="noopener noreferrer">
-          ↗ The GovLab
-        </a>
+        <button
+          className="partner-bar__toggle"
+          onClick={() => setPartnerBarOpen((open) => !open)}
+          aria-expanded={partnerBarOpen}
+          aria-controls="partner-links"
+        >
+          <span className="partner-label">This is a partner project of :</span>
+          <span className={`partner-bar__arrow ${partnerBarOpen ? "partner-bar__arrow--open" : ""}`} aria-hidden="true">
+            ↑
+          </span>
+        </button>
+        <div id="partner-links" className={`partner-bar__links ${partnerBarOpen ? "partner-bar__links--open" : ""}`}>
+          {PARTNER_LINKS.map((link) => (
+            <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">
+              ↗ {link.label}
+            </a>
+          ))}
+        </div>
       </div>
 
       {/* Nav */}
@@ -25,16 +49,60 @@ function App() {
         <a className="logo" href="#">
           innovate<span className="logo-us">(us)</span>
         </a>
-        <nav className="main-nav">
-          <a href="#">Ways to Learn ⌄</a>
-          <a href="#">Featured Topics</a>
-          <a href="#">News &amp; Perspectives ⌄</a>
-          <a href="#">About Us ⌄</a>
+
+        {/* Desktop nav — always visible */}
+        <nav className="main-nav main-nav--desktop">
+          {NAV_LINKS.map((link) => (
+            <a key={link.label} href="#">
+              {link.label} {link.expandable ? "⌄" : ""}
+            </a>
+          ))}
         </nav>
-        <a href="#" className="pill-btn pill-btn--outline">
+
+        <a href="#" className="pill-btn pill-btn--outline main-nav__cta">
           Sign Up for Updates
         </a>
+
+        {/* Mobile hamburger toggle */}
+        <button
+          className="hamburger"
+          onClick={() => setNavOpen((open) => !open)}
+          aria-expanded={navOpen}
+          aria-controls="mobile-nav"
+          aria-label={navOpen ? "Close menu" : "Open menu"}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
       </header>
+
+      {/* Mobile nav — collapsible hamburger menu */}
+      {navOpen && (
+        <nav id="mobile-nav" className="mobile-nav">
+          {NAV_LINKS.map((link) => (
+            <div key={link.label} className="mobile-nav__item">
+              <button
+                className="mobile-nav__link"
+                onClick={() =>
+                  link.expandable ? setOpenNavSection((cur) => (cur === link.label ? null : link.label)) : undefined
+                }
+                aria-expanded={link.expandable ? openNavSection === link.label : undefined}
+              >
+                {link.label}
+                {link.expandable && (
+                  <span className={`mobile-nav__chevron ${openNavSection === link.label ? "mobile-nav__chevron--open" : ""}`}>
+                    ⌄
+                  </span>
+                )}
+              </button>
+            </div>
+          ))}
+          <a href="#" className="pill-btn pill-btn--outline mobile-nav__cta">
+            Sign Up for Updates
+          </a>
+        </nav>
+      )}
 
       <main className="page">
         <div className="container">
@@ -106,8 +174,12 @@ function App() {
             <div>
               <p className="footer-label">Follow Us On</p>
               <div className="social-icons">
-                <span aria-hidden="true">in</span>
-                <span aria-hidden="true">🦋</span>
+                <a href="#" aria-label="LinkedIn">
+                  <img src="/icons/linkedin.png" alt="LinkedIn" />
+                </a>
+                <a href="#" aria-label="Bluesky">
+                  <img src="/icons/bluesky.png" alt="Bluesky" />
+                </a>
               </div>
             </div>
             <div>
