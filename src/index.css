@@ -1,7 +1,7 @@
 :root {
   --navy: #14213d;
   --navy-deep: #0f1c33;
-  --blue: #3b5bd9;
+  --blue: #0047AB;
   --blue-hover: #2f49b3;
   --gold: #e8ab2f;
   --bg-lavender: #e9edfb;
@@ -192,7 +192,7 @@ a {
   font-family: var(--font-display);
   font-size: 32px;
   font-weight: 600;
-  color: var(--navy);
+  color: var(--blue);
   margin: 0 0 20px;
 }
 
