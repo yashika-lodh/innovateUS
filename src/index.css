@@ -6,7 +6,7 @@
   --light-blue: #2D73D6;
   --bright-blue: #97bcef;
   --gold: #e8ab2f;
-  --bg-lavender: #e9edfb;
+  --bg-lavender: #EAF1FB;
   --white: #ffffff;
   --text-body: #2c3550;
   --text-muted: #6b7280;
@@ -50,7 +50,6 @@ a {
   background: var(--light-blue);
   color: var(--white);
   font-size: 14px;
-  padding-left: 100px;
 }
 
 .partner-bar__toggle {
@@ -139,13 +138,22 @@ a {
   width: auto;
 }
 
+/* Mobile: logo 20% smaller, navbar 20% narrower than desktop */
+@media (max-width: 1279px) {
+  .header-inner {
+    margin: 0 auto;
+  }
+  .logo-img {
+    height: 24px;
+  }
+}
+
 .logo-img--footer {
   height: 26px;
   margin-bottom: 30px;
 }
 
 .main-nav {
-  display: flex;
   gap: 32px;
   flex: 1;
   font-size: 16px;
@@ -242,6 +250,7 @@ a {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    padding-left: 100px;
   }
   .partner-bar__toggle {
     width: auto;
