@@ -175,47 +175,49 @@ function App() {
 
       {/* Footer */}
       <footer className="site-footer">
-        <div className="container">
-          <p className="footer-cta">
-            Want to be a part of our community of innovators? <em>We'd love to keep in touch.</em>
-          </p>
-          <a href="#" className="pill-btn pill-btn--ghost footer-cta-btn">
-            Join Our Mailing List
-          </a>
+        <div className="container footer-container">
+          <div className="footer-col footer-col--left">
+            <p className="footer-cta">
+              Want to be a part of our community of innovators? <em>We'd love to keep in touch.</em>
+            </p>
+            <a href="#" className="pill-btn pill-btn--ghost footer-cta-btn">
+              Join Our Mailing List
+            </a>
 
-          <div className="footer-grid">
-            <a href="#">
+            <a href="#" className="footer-logo-link">
               <img src="https://innovate-us.org/images/wordmark_dark.svg" alt="InnovateUS" className="logo-img logo-img--footer" />
             </a>
+
+            <div className="footer-bottom-row">
+              <div className="footer-links-col">
+                <a href="#">Contact Us</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Accessibility Policy</a>
+              </div>
+
+              <div className="footer-follow-col">
+                <p className="footer-label footer-label--follow">Follow Us On</p>
+                <div className="social-icons">
+                  <a href="#" aria-label="LinkedIn">
+                    <img src="/icons/linkedin.png" alt="LinkedIn" />
+                  </a>
+                  <a href="#" aria-label="Bluesky">
+                    <img src="/icons/bluesky.png" alt="Bluesky" />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="footer-columns">
-            <div>
-              <a href="#">Contact Us</a>
-              <a href="#">Privacy Policy</a>
-              <a href="#">Accessibility Policy</a>
-            </div>
-            <div>
-              <p className="footer-label footer-label--follow">Follow Us On</p>
-              <div className="social-icons">
-                <a href="#" aria-label="LinkedIn">
-                  <img src="/icons/linkedin.png" alt="LinkedIn" />
-                </a>
-                <a href="#" aria-label="Bluesky">
-                  <img src="/icons/bluesky.png" alt="Bluesky" />
-                </a>
-              </div>
-            </div>
-            <div>
-              <p className="footer-label footer-label--subscribe">
-                <em>Subscribe</em> for Updates
-              </p>
-              <div className="subscribe-row">
-                <input type="email" placeholder="Your Email" />
-                <button type="button" className="pill-btn pill-btn--ghost">
-                  Subscribe
-                </button>
-              </div>
+          <div className="footer-col footer-col--right">
+            <p className="footer-label footer-label--subscribe">
+              <em>Subscribe</em> for Updates
+            </p>
+            <div className="subscribe-row">
+              <input type="email" placeholder="Your Email" />
+              <button type="button" className="pill-btn pill-btn--ghost">
+                Subscribe
+              </button>
             </div>
           </div>
 
@@ -229,7 +231,6 @@ function App() {
         </div>
       </footer>
       <PartnerBar open={footerPartnerBarOpen} onToggle={() => setFooterPartnerBarOpen((o) => !o)} />
-
     </>
   );
 }
