@@ -495,9 +495,9 @@ select[aria-invalid="true"] {
 
 .help-text {
   text-align: center;
-  font-size: 14px;
+  font-size: 11px;
   color: var(--text-muted);
-  margin: 24px 0 0;
+  margin: 10px 0 20px;
 }
 .help-text a {
   color: var(--light-blue);
