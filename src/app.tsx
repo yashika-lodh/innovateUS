@@ -46,8 +46,8 @@ function App() {
 
       {/* Nav */}
       <header className="site-header">
-        <a className="logo" href="#">
-          innovate<span className="logo-us">(us)</span>
+        <a href="#">
+          <img src="https://innovate-us.org/images/wordmark_light.svg" alt="InnovateUS" className="logo-img" />
         </a>
 
         {/* Desktop nav — always visible */}
@@ -160,8 +160,8 @@ function App() {
           </a>
 
           <div className="footer-grid">
-            <a className="logo logo--footer" href="#">
-              innovate<span className="logo-us">(us)</span>
+            <a href="#">
+              <img src="https://innovate-us.org/images/wordmark_dark.svg" alt="InnovateUS" className="logo-img logo-img--footer" />
             </a>
           </div>
 

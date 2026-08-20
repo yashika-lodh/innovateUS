@@ -129,15 +129,24 @@ a {
   flex-wrap: wrap;
 }
 
-.logo {
+/* .logo {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 26px;
-  color: var(--navy);
+  color: var(--blue);
   letter-spacing: -0.5px;
 }
 .logo-us {
   color: var(--gold);
+} */
+
+.logo-img {
+  height: 28px;
+  width: auto;
+}
+
+.logo-img--footer {
+  height: 26px;
 }
 
 .main-nav {
@@ -526,6 +535,7 @@ select[aria-invalid="true"] {
 }
 .logo--footer {
   font-size: 26px;
+  color: #d7dceb;
 }
 
 .footer-columns {
