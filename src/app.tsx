@@ -32,7 +32,7 @@ function App() {
         >
           <span className="partner-label">This is a partner project of :</span>
           <span className={`partner-bar__arrow ${partnerBarOpen ? "partner-bar__arrow--open" : ""}`} aria-hidden="true">
-            ↑
+            ↓
           </span>
         </button>
         <div id="partner-links" className={`partner-bar__links ${partnerBarOpen ? "partner-bar__links--open" : ""}`}>
