@@ -145,9 +145,11 @@ function App() {
           {/* Event summary card */}
           <section className="event-card" aria-label="Workshop details">
             <div className="event-card__banner">
-              <span className="event-card__icon" aria-hidden="true">
-                📋
-              </span>
+              <img
+                src="https://directus.theburnescenter.org/assets/55e9b688-fdda-42b5-8f4e-760686a76d17?width=50"
+                alt="Practical Approaches to Evaluating AI for Public Benefit"
+                className="event-card__icon"
+              />
               <div>
                 <p className="event-card__series">Series</p>
                 <p className="event-card__series-title">
@@ -238,7 +240,6 @@ function App() {
           </p>
         </div>
       </footer>
-      <div className="footer-bottom-bar"/>
       <PartnerBar open={footerPartnerBarOpen} onToggle={() => setFooterPartnerBarOpen((o) => !o)} />
 
     </>
