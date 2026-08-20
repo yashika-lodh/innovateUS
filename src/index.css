@@ -141,10 +141,53 @@ a {
 /* Mobile: logo 20% smaller, navbar 20% narrower than desktop */
 @media (max-width: 1279px) {
   .header-inner {
-    margin: 0 auto;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 6px 24px;
+    min-height: 52px;
   }
   .logo-img {
     height: 24px;
+  }
+
+  .footer-links-col {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+  }
+
+  .footer-bottom-row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .social-icons {
+    margin-bottom: 50px;
+  }
+
+  .footer-links-col a {
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  }
+
+  .footer-links-col a:hover {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .license-line {
+    margin-top: 50px;
+  }
+
+  .footer-col--right {
+    margin-bottom: 50px;
+  }
+
+  .license-line {
+    margin-top: 0;
   }
 }
 
