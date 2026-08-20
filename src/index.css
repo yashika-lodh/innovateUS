@@ -3,6 +3,7 @@
   --navy-deep: #0f1c33;
   --blue: #1D4A8A;
   --blue-hover: #2f49b3;
+  --light-blue: #2D73D6;
   --gold: #e8ab2f;
   --bg-lavender: #e9edfb;
   --white: #ffffff;
@@ -181,44 +182,45 @@ a {
 
 .mobile-nav {
   background: var(--white);
-  border-bottom: 1px solid var(--border);
-  padding: 8px 24px 20px;
+  padding: 32px 24px 32px;
   display: flex;
   flex-direction: column;
+  gap: 32px;
 }
 
-.mobile-nav__item {
+/* .mobile-nav__item {
   border-bottom: 1px solid var(--border);
-}
+} */
 
 .mobile-nav__link {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 10px;
   background: none;
   border: none;
   font-family: inherit;
   font-size: 16px;
-  font-weight: 600;
-  color: var(--navy);
-  padding: 16px 4px;
+  font-weight: 400;
+  color: var(--navy-deep);
+  padding: 0;
   cursor: pointer;
   text-align: left;
 }
 
 .mobile-nav__chevron {
+  font-size: 20px;
+  color: var(--navy-deep);
   transition: transform 0.2s ease;
 }
+
 .mobile-nav__chevron--open {
   transform: rotate(180deg);
 }
 
 .mobile-nav__cta {
-  margin: 20px auto 0;
-  width: 100%;
-  max-width: 280px;
-  text-align: center;
+  margin-top: 8px;
+  width: fit-content;
 }
 
 @media (min-width: 1280px) {
@@ -238,10 +240,10 @@ a {
 
 .pill-btn {
   display: inline-block;
-  padding: 12px 24px;
+  padding: 15px 30px;
   border-radius: 999px;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -276,7 +278,7 @@ a {
 .eyebrow {
   font-weight: 700;
   color: var(--blue);
-  font-size: 20px;
+  font-size: 13px;
   margin-bottom: 24px;
 }
 
@@ -352,20 +354,20 @@ a {
   background: var(--white);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
-  padding: 32px;
+  padding: 24px;
 }
 
 .form-card__heading {
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--blue);
   margin: 0 0 28px;
 }
 
 .field {
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .field-row {
@@ -379,7 +381,7 @@ label {
   font-weight: 700;
   color: var(--navy-deep);
   margin-bottom: 10px;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .required {
@@ -390,10 +392,10 @@ input[type="text"],
 input[type="email"],
 select {
   width: 100%;
-  padding: 14px 16px;
+  padding: 10px 14px;
   border: 1.5px solid var(--border);
   border-radius: var(--radius);
-  font-size: 15px;
+  font-size: 14px;
   font-family: var(--font-body);
   color: var(--text-body);
   background: var(--white);
@@ -402,7 +404,7 @@ select {
 }
 
 select {
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9'><path d='M1 1l6 6 6-6' stroke='%236b7280' stroke-width='2' fill='none' fill-rule='evenodd'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 14 9'><path d='M0 0l7 9 7-9z' fill='%236b7280'/></svg>");
   background-repeat: no-repeat;
   background-position: right 16px center;
 }
@@ -457,12 +459,12 @@ select[aria-invalid="true"] {
 .submit-btn {
   display: block;
   width: 100%;
-  max-width: 260px;
+  max-width: 100%;
   margin: 8px auto 0;
   padding: 15px 24px;
   border: none;
   border-radius: var(--radius);
-  background: var(--blue);
+  background: var(--light-blue);
   color: var(--white);
   font-weight: 700;
   font-size: 14px;
@@ -472,9 +474,7 @@ select[aria-invalid="true"] {
   transition: background 0.15s ease;
   font-family: inherit;
 }
-.submit-btn:hover {
-  background: var(--blue-hover);
-}
+
 .submit-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
@@ -500,7 +500,7 @@ select[aria-invalid="true"] {
   margin: 24px 0 0;
 }
 .help-text a {
-  color: var(--blue);
+  color: var(--light-blue);
 }
 
 /* ---------- Footer ---------- */

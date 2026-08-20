@@ -92,7 +92,7 @@ function App() {
                 {link.label}
                 {link.expandable && (
                   <span className={`mobile-nav__chevron ${openNavSection === link.label ? "mobile-nav__chevron--open" : ""}`}>
-                    ⌄
+                    ↓
                   </span>
                 )}
               </button>
