@@ -15,15 +15,47 @@ const NAV_LINKS = [
   { label: "About Us", expandable: true },
 ];
 
+function PartnerBar({
+  open,
+  onToggle,
+}: {
+  open: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <div className="partner-bar">
+      <button
+        className="partner-bar__toggle"
+        onClick={onToggle}
+        aria-expanded={open}
+        aria-controls="partner-links"
+      >
+        <span className="partner-label">This is a partner project of :</span>
+        <span className={`partner-bar__arrow ${open ? "partner-bar__arrow--open" : ""}`} aria-hidden="true">
+          ↓
+        </span>
+      </button>
+      <div id="partner-links" className={`partner-bar__links ${open ? "partner-bar__links--open" : ""}`}>
+        {PARTNER_LINKS.map((link) => (
+          <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer">
+            ↗ {link.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function App() {
   const [partnerBarOpen, setPartnerBarOpen] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
   const [openNavSection, setOpenNavSection] = useState<string | null>(null);
+  const [footerPartnerBarOpen, setFooterPartnerBarOpen] = useState(false);
 
   return (
     <>
       {/* Top partner bar — collapsible, matches reference site's expand/collapse behavior */}
-      <div className="partner-bar">
+      {/* <div className="partner-bar">
         <button
           className="partner-bar__toggle"
           onClick={() => setPartnerBarOpen((open) => !open)}
@@ -42,7 +74,9 @@ function App() {
             </a>
           ))}
         </div>
-      </div>
+      </div> */}
+
+      <PartnerBar open={partnerBarOpen} onToggle={() => setPartnerBarOpen((o) => !o)} />
 
       {/* Nav */}
       <header className="site-header">
@@ -155,7 +189,7 @@ function App() {
           <p className="footer-cta">
             Want to be a part of our community of innovators? <em>We'd love to keep in touch.</em>
           </p>
-          <a href="#" className="pill-btn pill-btn--ghost">
+          <a href="#" className="pill-btn pill-btn--ghost footer-cta-btn">
             Join Our Mailing List
           </a>
 
@@ -172,7 +206,7 @@ function App() {
               <a href="#">Accessibility Policy</a>
             </div>
             <div>
-              <p className="footer-label">Follow Us On</p>
+              <p className="footer-label footer-label--follow">Follow Us On</p>
               <div className="social-icons">
                 <a href="#" aria-label="LinkedIn">
                   <img src="/icons/linkedin.png" alt="LinkedIn" />
@@ -183,7 +217,7 @@ function App() {
               </div>
             </div>
             <div>
-              <p className="footer-label">
+              <p className="footer-label footer-label--subscribe">
                 <em>Subscribe</em> for Updates
               </p>
               <div className="subscribe-row">
@@ -196,10 +230,17 @@ function App() {
           </div>
 
           <p className="license-line">
-            This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+            This work is licensed under a{" "}
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">
+              Creative Commons Attribution-ShareAlike 4.0 International License
+            </a>
+            .
           </p>
         </div>
       </footer>
+      <div className="footer-bottom-bar"/>
+      <PartnerBar open={footerPartnerBarOpen} onToggle={() => setFooterPartnerBarOpen((o) => !o)} />
+
     </>
   );
 }
